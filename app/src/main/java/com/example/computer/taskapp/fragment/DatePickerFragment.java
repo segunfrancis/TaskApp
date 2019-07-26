@@ -8,11 +8,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.widget.DatePicker;
 
+import com.example.computer.taskapp.AddTaskActivity;
 import com.example.computer.taskapp.MainActivity;
 
 import java.util.Calendar;
 
-public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+public class DatePickerFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -22,11 +23,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
 
-        return new DatePickerDialog(getActivity(), (MainActivity) getActivity(), year, month, day);
+        return new DatePickerDialog(getActivity(), (AddTaskActivity) getActivity(), year, month, day);
     }
 
-    @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-    }
 }

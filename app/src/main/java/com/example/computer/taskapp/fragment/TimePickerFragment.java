@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.text.format.DateFormat;
 
+import com.example.computer.taskapp.AddTaskActivity;
 import com.example.computer.taskapp.MainActivity;
 
 import java.util.Calendar;
@@ -22,7 +23,7 @@ public class TimePickerFragment extends DialogFragment {
         int minute = c.get(Calendar.MINUTE);
 
         // Create a new instance of TimePickerDialog and return it
-        return new TimePickerDialog(getActivity(), (MainActivity) getActivity(),
+        return new TimePickerDialog(getActivity(), (AddTaskActivity) getActivity(),
                 hour, minute, DateFormat.is24HourFormat(getActivity()));
     }
 }
