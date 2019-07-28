@@ -3,11 +3,12 @@ package com.example.computer.taskapp;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
+
+import androidx.fragment.app.DialogFragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.appcompat.widget.Toolbar;
+
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -21,7 +22,6 @@ import com.example.computer.taskapp.fragment.TimePickerFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class AddTaskActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
