@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/personal"
+        android:title="Personal"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/education"
+        android:title="Education"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sports"
+        android:title="Sports"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/family"
+        android:title="Family"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/entertainment"
+        android:title="Entertainment"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/religion"
+        android:title="Religion"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/other"
+        android:title="Other"
+        app:showAsAction="never" />
+</menu>
