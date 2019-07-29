@@ -24,8 +24,8 @@ public interface TaskDao {
     void deleteTask(Task task);
 
     @Query("DELETE from task_table")
-    void deleteAllTaksk();
+    void deleteAllTasks();
 
     @Update
-    void updateTask(Task... tasks);
+    void updateTask(Task tasks);
 }

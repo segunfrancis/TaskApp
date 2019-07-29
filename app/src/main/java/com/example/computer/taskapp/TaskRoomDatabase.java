@@ -14,7 +14,7 @@ public abstract class TaskRoomDatabase extends RoomDatabase {
 
     private static volatile TaskRoomDatabase INSTANCE;
 
-    static TaskRoomDatabase getDatabase(Context context) {
+    public static TaskRoomDatabase getDatabase(Context context) {
         if (INSTANCE == null) {
             synchronized (TaskRoomDatabase.class) {
                 if (INSTANCE == null) {
