@@ -2,6 +2,7 @@ package com.example.computer.taskapp;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.computer.taskapp.fragment.DatePickerFragment;
 import com.example.computer.taskapp.fragment.TimePickerFragment;
+import com.example.computer.taskapp.model.Task;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -38,7 +41,7 @@ public class AddTaskActivity extends AppCompatActivity implements TimePickerDial
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Add Task");
 
-        EditText task = findViewById(R.id.etTask);
+        EditText etTask = findViewById(R.id.etTask);
         TextView categoryTextView = findViewById(R.id.category);
         CardView categoryCardView = findViewById(R.id.category_cardView);
 
@@ -55,6 +58,20 @@ public class AddTaskActivity extends AppCompatActivity implements TimePickerDial
         });
 
         Button createTask = findViewById(R.id.btnCreateTask);
+        createTask.setOnClickListener(view -> {
+            if (TextUtils.isEmpty(etTask.getText().toString().trim())) {
+                etTask.setError("Add a Task");
+            } else {
+                String taskString = etTask.getText().toString().trim();
+                String categoryString = categoryTextView.getText().toString();
+                Intent intent = new Intent(AddTaskActivity.this, MainActivity.class);
+                Task task = new Task(taskString, categoryString, dueDate, dueTime);
+                intent.putExtra("task_object", task);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         findViewById(R.id.imageDatePicker).setOnClickListener(dateView -> {
             DialogFragment dialogFragment = new DatePickerFragment();
             dialogFragment.show(getSupportFragmentManager(), "timePicker");

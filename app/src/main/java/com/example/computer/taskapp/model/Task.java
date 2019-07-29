@@ -1,11 +1,14 @@
 package com.example.computer.taskapp.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "task_table")
-public class Task {
+public class Task implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -29,6 +32,26 @@ public class Task {
         this.dueDate = dueDate;
         this.dueTime = dueTime;
     }
+
+    protected Task(Parcel in) {
+        id = in.readInt();
+        task = in.readString();
+        category = in.readString();
+        dueDate = in.readString();
+        dueTime = in.readString();
+    }
+
+    public static final Creator<Task> CREATOR = new Creator<Task>() {
+        @Override
+        public Task createFromParcel(Parcel in) {
+            return new Task(in);
+        }
+
+        @Override
+        public Task[] newArray(int size) {
+            return new Task[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -68,5 +91,19 @@ public class Task {
 
     public void setDueTime(String dueTime) {
         this.dueTime = dueTime;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(task);
+        dest.writeString(category);
+        dest.writeString(dueDate);
+        dest.writeString(dueTime);
     }
 }
