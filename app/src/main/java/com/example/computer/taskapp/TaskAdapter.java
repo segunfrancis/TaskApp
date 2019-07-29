@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.computer.taskapp.model.Task;
 import com.makeramen.roundedimageview.RoundedImageView;
 
@@ -39,6 +40,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             if (currentTask.getCategory().equals("Personal")) {
                 holder.categoryImage.setImageResource(R.drawable.personal_icon);
             }
+            Glide.with()
         }
     }
 
