@@ -3,14 +3,26 @@ package com.example.computer.taskapp;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.computer.taskapp.model.Task;
+import com.example.computer.taskapp.viewModel.TaskViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private TaskViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +30,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        recyclerView = findViewById(R.id.recycler_view);
+        TaskAdapter adapter = new TaskAdapter(MainActivity.this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        viewModel = ViewModelProviders.of(this).get(TaskViewModel.class);
+        viewModel.getAllNotes().observe(this, new Observer<List<Task>>() {
+            @Override
+            public void onChanged(List<Task> tasks) {
+
+            }
+        });
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AddTaskActivity.class)));
