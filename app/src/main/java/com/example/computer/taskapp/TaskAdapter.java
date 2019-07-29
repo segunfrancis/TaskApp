@@ -5,10 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.computer.taskapp.model.Task;
+import com.example.computer.taskapp.util.ImageResources;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.List;
@@ -20,8 +22,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     private List<Task> tasks;
     private LayoutInflater inflater;
+    private Context context;
 
     public TaskAdapter(Context context) {
+        this.context = context;
         inflater = LayoutInflater.from(context);
     }
 
@@ -37,16 +41,59 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         if (tasks != null) {
             Task currentTask = tasks.get(position);
             holder.taskTextView.setText(currentTask.getTask());
-            if (currentTask.getCategory().equals("Personal")) {
-                holder.categoryImage.setImageResource(R.drawable.personal_icon);
+            switch (currentTask.getCategory()) {
+                case "Personal": {
+                    loadImage(context, ImageResources.personalImage, holder.moreImageView);
+                    break;
+                }
+                case "Family": {
+                    loadImage(context, ImageResources.familyImage, holder.moreImageView);
+                    break;
+                }
+                case "Education": {
+                    loadImage(context, ImageResources.educationImage, holder.moreImageView);
+                    break;
+                }
+                case "Sports": {
+                    loadImage(context, ImageResources.sportImage, holder.moreImageView);
+                    break;
+                }
+                case "Religion": {
+                    loadImage(context, ImageResources.religionImage, holder.moreImageView);
+                    break;
+                }
+                case "Other": {
+                    loadImage(context, ImageResources.otherImage, holder.moreImageView);
+                    break;
+                }
+                case "Entertainment": {
+                    loadImage(context, ImageResources.entertainmentImage, holder.moreImageView);
+                    break;
+                }
+                default: {
+                    loadImage(context, ImageResources.otherImage, holder.moreImageView);
+                    break;
+                }
             }
-            Glide.with()
+
+            // More Icon
+            loadImage(context, ImageResources.moreIcon, holder.moreImageView);
+            /*if (currentTask.getCategory().equals("Personal")) {
+                //holder.categoryImage.setImageResource(R.drawable.personal_icon);
+                loadImage(context, ImageResources.personalImage, holder.moreImageView);
+            }*/
         }
     }
 
     @Override
     public int getItemCount() {
         return tasks.size();
+    }
+
+    public void loadImage(Context context, String url, ImageView view) {
+        Glide.with(context)
+                .load(url)
+                .into(view);
     }
 
     public class TaskViewHolder extends RecyclerView.ViewHolder {
