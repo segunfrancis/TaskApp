@@ -21,7 +21,7 @@ public class TaskRepository {
         mAllTasks = mTaskDao.getAllTasks();
     }
 
-    LiveData<List<Task>> getAllTasks() {
+    public LiveData<List<Task>> getAllTasks() {
         return mAllTasks;
     }
 
@@ -33,12 +33,12 @@ public class TaskRepository {
         new insertAsyncTask(mTaskDao).execute(task);
     }
 
-    public void deleteAllTask() {
+    public void deleteAllTasks() {
         new deleteAllTasksAsyncTask(mTaskDao).execute();
     }
 
-    public void updateTask(Task tasks) {
-        new updateTaskAsyncTask(mTaskDao).execute(tasks);
+    public void updateTask(Task task) {
+        new updateTaskAsyncTask(mTaskDao).execute(task);
     }
 
     public static class deleteAsyncTask extends AsyncTask<Task, Void, Void> {
