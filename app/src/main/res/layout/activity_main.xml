@@ -20,8 +20,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -30,4 +28,22 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@drawable/ic_add_white" />
 
+    <include layout="@layout/content_main" />
+
+    <ImageView
+        android:id="@+id/empty_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_empty_list"
+        android:padding="8dp"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/empty_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/empty_image"
+        android:gravity="center"
+        app:layout_anchorGravity="bottom"
+        android:text="No Task Added" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

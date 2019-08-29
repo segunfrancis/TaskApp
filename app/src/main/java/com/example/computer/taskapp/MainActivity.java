@@ -31,18 +31,19 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Intent intent = getIntent();
+        Task newTask = intent.getParcelableExtra("task_object");
+
         recyclerView = findViewById(R.id.recycler_view);
         TaskAdapter adapter = new TaskAdapter(MainActivity.this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         viewModel = ViewModelProviders.of(this).get(TaskViewModel.class);
-        viewModel.getAllNotes().observe(this, new Observer<List<Task>>() {
-            @Override
-            public void onChanged(List<Task> tasks) {
-
-            }
-        });
+        viewModel.getAllNotes().observe(this, adapter::setTasks);
+        if (newTask != null) {
+            viewModel.insert(newTask);
+        }
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AddTaskActivity.class)));

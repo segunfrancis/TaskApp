@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
     app:contentPadding="8dp"
     app:cardBackgroundColor="#FFF"
     app:cardCornerRadius="8dp">
@@ -37,7 +38,7 @@
             android:maxLines="2"
             android:textAppearance="@style/TextAppearance.AppCompat"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/more_icon"
+            app:layout_constraintEnd_toStartOf="@id/more_icon"
             app:layout_constraintStart_toEndOf="@+id/category_image"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Do a little stretching Do a little stretching Do a little stretching Do a little stretching Do a little stretching Do a little stretching" />

@@ -13,6 +13,5 @@ public class ImageResources {
     public static final String religionImage = Uri.parse("android.resource://com.example.computer.taskapp/" + R.drawable.religion_icon).toString();
     public static final String otherImage = Uri.parse("android.resource://com.example.computer.taskapp/" + R.drawable.other_icon).toString();
 
-
     public static final String moreIcon = Uri.parse("android.resource://com.example.computer.taskapp/" + R.drawable.ic_more_horiz).toString();
 }
